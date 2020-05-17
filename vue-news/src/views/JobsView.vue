@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="user in users">{{ user.title }}</div>
+        <div v-for="job in jobs">{{ job.title }}</div>
     </div>
 </template>
 
@@ -10,20 +10,23 @@ import { fetchJobsList } from '../api/index.js';
 export default {
     data() {
         return {
-            users: []
+            jobs: []
         }
     },
     created() {
-        var vm = this;
         fetchJobsList()
         .then(response => { 
             console.log(response);
-            vm.users = response.data;
+            this.jobs = response.data;
         })
         .catch(error => {
             console.log(error);
         })
     }
+
+    //created,
+    //beforeMount,
+    //mounted,    // reactivity로 gui가 다시 그려지게 됨
 }
 </script>
 
