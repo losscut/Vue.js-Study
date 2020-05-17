@@ -8,6 +8,8 @@ import UserView from '../views/UserView.vue';
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+    // # 붙는 걸 제거해줌
+    mode: 'history',
     routes: [
         {
           path: '/',
