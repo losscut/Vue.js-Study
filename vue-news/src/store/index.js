@@ -13,6 +13,11 @@ export const store = new Vuex.Store({
         jobs: [],
         asks: [],
     },
+    getters: {
+        fetchedAsk(state) {
+            return state.asks;
+        }
+    },
     mutations: {
         SET_NEWS(state, news) {
             state.news = news;
@@ -25,36 +30,33 @@ export const store = new Vuex.Store({
         }
     },
     actions: {
-        FETCH_NEWS(context) {
+        FETCH_NEWS({ commit }) {
             fetchNewsList()
-            .then(response => {
-                console.log(response);
-                context.commit('SET_NEWS', response.data);
+            .then(({ data }) => {
+                commit('SET_NEWS', data);
             })
             .catch(error => {
                 console.log(error);
             });
         },
-        FETCH_JOBS(context) {
+        FETCH_JOBS({ commit }) {
             fetchJobsList()
-            .then(response => { 
-                console.log(response);
-                context.commit('SET_JOBS', response.data);
+            .then(({ data }) => { 
+                commit('SET_JOBS', data);
             })
             .catch(error => {
                 console.log(error);
             })
         },
-        FETCH_ASKS(context) {
+        FETCH_ASKS({ commit }) {
             fetchAsksList()
             // => 함수는 호출부의 this를, function 으로 묶은 건 다른 바인딩 this
-            .then(response => { 
-                console.log(response);
-                context.commit('SET_ASKS', response.data);
+            .then(({data}) => { 
+                commit('SET_ASKS', data);
             })
             .catch(error => {
                 console.log(error);
-            })
+            }) 
         }
     },
     // getters,
