@@ -1,6 +1,13 @@
 <template>
     <div>
-        <div v-for="job of this.$store.state.jobs">{{ job.title }}</div>
+        <p v-for="item of this.$store.state.jobs">
+            <a :href="item.url"> 
+                {{ item.title }} 
+            </a>
+            <small> 
+                {{ item.time_ago }},{{ item.domain }}
+            </small>
+        </p>
     </div>
 </template>
 
