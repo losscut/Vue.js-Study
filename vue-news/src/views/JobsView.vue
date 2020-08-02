@@ -1,40 +1,16 @@
 <template>
     <div>
-        <ul class="news-list">
-            <li v-for="item in this.$store.state.jobs" class="post">
-                <!-- 포인트 영역 -->
-                <div class="points">
-                    {{ item.points || 0 }}
-                </div>
-
-                <!-- 기타 정보 영역 -->
-                <div>
-                    <p class='news-title'>
-                        <a :href="item.url"> 
-                            {{ item.title }} 
-                        </a>
-                    </p>
-                    <small class="link-text">
-                        {{ item.time_ago}} by 
-                        <a :href="item.url">
-                            {{ item.domain }}
-                        </a>
-                    </small>
-                </div>
-            </li>
-        </ul>
+        <list-item></list-item>
     </div>
 </template>
 
 <script>
-export default {
-    created() {
-        this.$store.dispatch('FETCH_JOBS');
-    }
+import ListItem from '../components/Listitem.vue';
 
-    //created,
-    //beforeMount,
-    //mounted,    // reactivity로 gui가 다시 그려지게 됨
+export default {
+    components: {
+        ListItem,
+    },
 }
 </script>
 
