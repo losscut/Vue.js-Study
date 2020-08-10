@@ -8,10 +8,10 @@
                 </div>
                 <div class="user-description">
                     <router-link v-bind:to="`/user/${itemInfo.user}`">
-                        {{ itemInfo.user }}
+                        <!-- {{ itemInfo.user }} -->
                     </router-link>
                     <div class="time">
-                        {{ itemInfo.time_ago }}
+                        <!-- {{ itemInfo.time_ago }} -->
                     </div>
                 </div>
             </div>
